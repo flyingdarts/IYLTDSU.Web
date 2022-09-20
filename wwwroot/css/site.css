@@ -1,0 +1,193 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+.navbar {
+    padding: 15px 40px;
+}
+
+.navbar-control {
+    justify-content: flex-end !important;
+}
+
+.navbar-control a {
+    text-decoration-style: unset;
+}
+
+.carousel-custom-top {
+    display: flex !important;
+    height: 50% !important;
+}
+
+.carousel-custom-top img {
+    height: fit-content !important;
+    display: flex;
+    align-self: end;
+}
+
+.carousel-custom-bottom {
+    display: flex !important;
+    height: 50% !important;
+    width: 100%;
+}
+
+.carousel-custom-bottom p {
+    text-align: center;
+}
+
+.carousel-custom-bottom .carousel-caption {
+    width: 100%;
+}
+
+.card {
+    height: 800px;
+}
+
+.card-body {
+    padding: 0 !important;
+    padding-left: 30px;
+}
+
+.card-body,
+.container,
+.row:last-of-type,
+.carousel-inner,
+.carousel-item {
+    height: 100%;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 55px);
+    justify-content: center;
+}
+
+.registration-info {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.registration-subtitle {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.registration-title {
+    font-size: 36px;
+    line-height: 54px;
+}
+
+.registration-carousel-button {
+    width: 10px !important;
+    height: 10px !important;
+    background-color: #EFEFEF !important;
+    border: none !important;
+    opacity: 1 !important;
+    border-radius: 5px;
+}
+
+.registration-carousel-indicators {
+    left: unset;
+    margin-right: unset;
+    right: 40px;
+    bottom: 40px;
+}
+
+.carousel-caption {
+    position: relative !important;
+    color: #4C56C0;
+    left: initial !important;
+    right: initial !important;
+}
+
+.text-primary {
+    color: #4C56C0
+}
+
+#registrationCarousel>div.carousel-indicators>button.registration-carousel-button.active {
+    background-color: #4C56C0 !important
+}
+
+.app-view-portrait-inner {
+    margin: auto;
+}
+
+.app-view-portrait-registration {
+    background-color: #4c56c0;
+    color: white;
+    padding: 0 40px;
+    display: flex;
+}
+
+.app-view-portrait-registration .socials-frame {
+    background: #3C46A7;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+.my-primary-button {
+    background-color: #F9617D;
+    color: white;
+    border-radius: 20px;
+    height: 40px;
+    width: 100%;
+}
+
+.navbar-expand-lg {
+    flex-wrap: wrap;
+}
+
+.for-debugging {
+    font-size: 15px;
+    position: absolute;
+    top: 0;
+    left: -250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.toast-header>img {
+    max-height: 46px;
+    max-width: 46px;
+    border-radius: 22px;
+}
+
+.ah-yeet {
+    content: "Ah yeet";
+}

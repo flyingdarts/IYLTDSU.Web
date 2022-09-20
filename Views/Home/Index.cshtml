@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.LoginEndpoint =  "https://auth.flyingdarts.net/login?response_type=code&client_id=7f1gvuc7ti7bhda3mjs8ovmc0&redirect_uri=https%3A%2F%2Fflyingdarts.net%2F";
+}
+@model IYLTDSU.WebApp.Views.Home.HomePageViewModel
+<link href="@Url.Content("~/css/signup-and-registration.css")" rel="stylesheet" type="text/css" />
+<div style="display: none;">
+    <form name="login-form" action="/token" method="POST" enctype="multipart/form-data">
+        <input name="code" type="hidden" value="@ViewBag.Code" />
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+<div class="row g-0">
+    <div class="col-8">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid col-7">
+                <a class="navbar-brand">@ViewBag.Tokens</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a asp-page="/Index" class="nav-link">Home</a></li>
+                        @*<li class="nav-item"><a asp-page="/Auth/Index" class="nav-link">Auth</a></li>
+                        <li class="nav-item"><a asp-page="/Game/Index" class="nav-link">Game</a></li>
+                        <li class="nav-item"><a asp-page="/Game/Index" class="nav-link">Game</a></li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="container-fluid col-5 navbar-control">
+                @*<a>501 - Best of 3 Sets 9 Legs - Double Out</a>*@
+            </div>
+        </nav>
+        <div id="registrationCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-custom-top">
+                        <img src="~/images/undraw_social_media.svg" class="d-block w-50 mx-auto" alt="Dartboard with one dart">
+                    </div>
+                    <div class="carousel-custom-bottom">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>First slide label</h5>
+                            <p>Some representative placeholder content for the first slide.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-custom-top">
+                        <img src="~/images/undraw_personal_information.svg" class="d-block w-50 mx-auto" alt="Dartboard with three darts">
+                    </div>
+                    <div class="carousel-custom-bottom">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Second slide label</h5>
+                            <p>Some representative placeholder content for the second slide.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-custom-top">
+                        <img src="~/images/undraw_speech_to_text.svg" class="d-block w-50 mx-auto" alt="Person picking the darts for the dartboard">
+                    </div>
+                    <div class="carousel-custom-bottom">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Third slide label</h5>
+                            <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-indicators registration-carousel-indicators">
+                <button class="registration-carousel-button active" type="button" data-bs-target="#registrationCarousel" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
+                <button class="registration-carousel-button" type="button" data-bs-target="#registrationCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button class="registration-carousel-button" type="button" data-bs-target="#registrationCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 app-view-portrait app-view-portrait-registration">
+        <div class="app-view-portrait-inner">
+            <h1 class="registration-title text-center">Start Darting Fast!</h1>
+            <h2 class="registration-subtitle text-center">Setting up your account</h2>
+            <a href="@ViewBag.LoginEndpoint"class="socials-button">Connect with your preferred social account</a>
+            <p class="registration-info">Don't worry, we wont share your details with anyone else.</p>
+            <form id="connectForm" class="input-group" method="post">
+                <input type="hidden" id="MyCode" value="@ViewBag.Tokens" />
+                <div class="input-group">
+                    <input type="submit" class="btn btn-primary my-primary-button" Value="Confirm"/>
+                </div>
+                <label class="form-control checkbox-control">
+                    <input type="checkbox" name="checkbox-checked" checked=""/>
+                    <span>By clicking Confirm, you agree to our
+                        @Html.ActionLink("Terms of Service", "TermsOfService", "Legal", null)
+                        and
+                        @Html.ActionLink("Privacy Policy", "PrivacyPolicy", "Legal", null)
+                    </span>
+                </label>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="/js/home.js" type="text/javascript"></script>
+}

@@ -1,0 +1,97 @@
+﻿@using Newtonsoft.Json
+@model IYLTDSU.WebApp.Models.Lobby.SidebarViewModel
+
+<link href="@Url.Content("~/css/lobby.css")" rel="stylesheet" type="text/css" />
+<div class="lobby-container">
+    <div class="lobby-content col-9">
+        <nav class="lobby-navbar navbar navbar-expand-lg">
+            <div class="container col-7">
+                <a class="navbar-brand">0000</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3">
+            
+        </div>
+        <div class="lobby-content-inner main-container">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                    <div class="container d-flex">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                                <div id="partyGridControls" class="card player-card game-settings"><a><span class="material-icons">play_circle</span></a></div>
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                                <div class="card player-card"><a><span class="material-icons">add_circle_outline</span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                    <div class="container">
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col-2">CognitoId</div>
+                            <div class="col-4"><input type="text" disabled="disabled" id="userInput" /></div>
+                            <div class="col-2">User</div>
+                            <div class="col-4"><input type="text" id="userInput" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">Message</div>
+                            <div class="col-4"><input type="text" id="messageInput" /></div>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="button" id="sendButton" value="Send Message" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0"><div></div></div>
+                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0"><div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="lobby-sidebar col-3">
+        @{
+            @await Html.PartialAsync("_Sidebar", Model);
+        }
+    </div>
+</div>
+
+                
+<div class="for-debugging">
+    @* <pre> *@
+    @*     @JsonConvert.SerializeObject(Model, new JsonSerializerSettings { Formatting = Formatting.Indented }) *@
+    @* </pre> *@
+</div>
+@section Scripts {
+    <script src="/js/hubs/lobby.js" type="text/javascript"></script>
+}

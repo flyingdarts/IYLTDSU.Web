@@ -1,0 +1,184 @@
+﻿
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    text-align: center;
+}
+
+.box .row.header {
+    flex: 1 1 20px;
+}
+
+    .box .row.content {
+        flex: 1 1 auto;
+        align-content: center;
+    }
+
+    .box .row.content p, a {
+        margin: 0;
+        font-size: 2.4em;
+        line-height: initial !important;
+        color: #3C46A7;
+    }
+
+.box .row .content div {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box .row.footer {
+    flex: 1 1 20px;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.nav-tabs, .nav-item, .nav-link {
+    border: none !important;
+}
+
+.player-card {
+    height: 104px;
+    width: 214px;
+    margin: 10px;
+    background-color: #7B81D8;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-settings {
+    height: 218px;
+}
+.player-card-current {
+
+}
+
+.col-4 {
+    padding: 0;
+}
+
+.col-4 .player-card:nth-of-type(1) {
+    margin-top: 0px;
+}
+
+.container .col-12 .d-flex {
+    padding: 0 50px;
+}
+
+.friends_list_image {
+    max-height: 46px;
+    max-width: 46px;
+    border-radius: 22px;
+}
+
+.app-view-portrait-registration {
+    margin: 0;
+    padding: 0;
+}
+.app-view-portrait-inner {
+    margin: 20px;
+    width: 100%
+}
+
+.friend-list-icons-container {
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.lobby-container {
+    display: flex;
+    height: 100%;
+}
+
+.lobby-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.lobby-sidebar {
+    display: flex;
+    flex-flow: column;
+    margin: 0;
+    padding: 0;
+    background-color: #4C56C0;
+    color: white;
+    padding: 20px;
+}
+
+.lobby-sidebar > div {
+    margin-bottom: 10px;
+}
+.lobby-content-inner {
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-current-user {
+    display: flex;
+}
+
+.sidebar-current-user-image {
+    max-height: 46px;
+    max-width: 46px;
+    border-radius: 22px;
+    margin-right: 14px;
+}
+.sidebar-current-user-party-header {
+    display: flex;
+    justify-content: space-between;
+}
+    .sidebar-current-user-party-header input[type='checkbox']:checked, input[type='checkbox']:active {
+        background-color: #7B81D8;
+        border-color: #7B81D8;
+    }
+
+.sidebar-current-user-party-header > div > span {
+    padding-right: 10px;
+}
+
+.sidebar-current-user-party-size {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 20px;
+}
+
+.sidebar-friends-list-header {
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar-friends-list-header > span {
+    text-transform: uppercase;
+}
+.sidebar-friends-list-header-controls {
+    display: flex;
+}
+.sidebar-friends-list-header-controls > span {
+    margin-left: 10px;
+}
+.sidebar-friends-list > span {
+    padding-bottom: 10px;
+}
+.sidebar-bottom-bar {
+    display: flex;
+    height: -webkit-fill-available;
+    flex: 1 1 100%;
+    justify-content: center;
+    align-items: end;
+}
+

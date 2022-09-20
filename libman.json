@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "unpkg",
+      "library": "@microsoft/signalr@latest",
+      "destination": "wwwroot/lib/microsoft/signalr/",
+      "files": [
+        "dist/browser/signalr.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "amazon-cognito-identity-js@5.2.10",
+      "destination": "wwwroot/lib/amazon-cognito-identity-js/",
+      "files": [
+        "dist/amazon-cognito-identity.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "aws-amplify@4.3.35",
+      "destination": "wwwroot/lib/aws-amplify/",
+      "files": [
+        "dist/aws-amplify.min.js"
+      ]
+    }
+  ]
+}

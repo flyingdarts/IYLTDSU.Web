@@ -1,0 +1,124 @@
+﻿input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* background-color: var(--form-background); */
+    margin: 0;
+    font-size: 4em;
+    line-height: 1em;
+    text-align: start !important;
+    color: currentColor;
+    width: 1.5em;
+    height: 1.4em;
+    border: 0.2em solid #f9617d;
+    border-radius: 0.8em;
+    display: flex;
+    align-self: start;
+    place-content: center;
+    margin-right: 8px;
+    margin-top: 2px;
+    padding-top: 0.175em;
+    margin: 0 auto;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 600ms transform ease-in-out;
+    background-color: #f9617d;
+}
+
+.checkbox-control {
+    background-color: #4c56c0;
+    border: none;
+    color: white;
+    display: flex;
+    font-size: 10px;
+    line-height: 16px;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.checkbox-control a {
+    color: #f9617d;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+input[type="checkbox"]:focus {
+    /*outline: max(2px, 0.15em) solid currentColor;*/
+    /*outline-offset: max(2px, 0.15em);*/
+}
+
+input[type="checkbox"]:disabled {
+    /*    --form-control-color: var(--form-control-disabled);
+    color: var(--form-control-disabled);*/
+    cursor: not-allowed;
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    text-align: center;
+}
+
+.box .row.header {
+    flex: 1 1 20px;
+}
+
+    .box .row.content {
+        flex: 1 1 auto;
+        align-content: center;
+    }
+
+    .box .row.content p, a {
+        margin: 0;
+        font-size: 2.4em;
+        line-height: initial !important;
+        color: #3C46A7;
+    }
+
+.box .row .content div {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box .row.footer {
+    flex: 1 1 20px;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.check-box-text {
+    margin: 0 auto;
+    justify-self: center;
+    display:flex;
+    width: auto;
+    height: min-content;
+    vertical-align: middle;
+}
+    .check-box-text p {
+        display: flex;
+        /* align-content: center; */
+        align-items: center;
+    }
+.check-box-text input {
+    margin: 0;
+    margin-right: 0.25em;
+}
