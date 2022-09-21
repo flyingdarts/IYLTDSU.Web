@@ -33,26 +33,15 @@ public class HomeController : Controller
 
     [HttpGet("login")]
     public ActionResult Login([FromQuery] Guid code)
-
     {
-        ViewBag.Code = code.ToString();
-        return View("index");
-    }
-
-    [HttpPost("token")]
-    [ActionName("token")]
-    public async Task<ActionResult> Token(Guid code)
-    {
-        var httpContent = new FormUrlEncodedContent(
+        var body = new FormUrlEncodedContent(
             CognitoOptions
                 .ToKeyValuePairs()
-                .Concat(new []
+                .Concat(new[]
                 {
                     new KeyValuePair<string, string>("code", code.ToString())
                 }));
-
-        var result = await HttpClient.PostAsync("/oauth2/token", httpContent);
-        ViewBag.Tokens = await result.Content.ReadAsStringAsync();
-        return RedirectToAction("Index", "Lobby" );
+        ViewBag.AuthBody = body;
+        return View("index");
     }
 }
