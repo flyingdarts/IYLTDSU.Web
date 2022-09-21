@@ -52,22 +52,6 @@ async function showToast(message) {
     };
 }
 
-$(document).ready(function () {
-    console.log(new URLSearchParams(window.location.search).get("code"));
-    if (!isNullOrUndefined(getCode()) && getCode().code.length > 1) {
-        $('input[name="code"]').val(getCode().code);
-        $('form[name="login-form"]').submit();
-    }
-});
-
-$(window).on("load", function () {
-    console.log(`Code=${new URLSearchParams(window.location.search).get("code")}`);
-    if (!isNullOrUndefined(getCode()) && getCode().code.length > 1) {
-        $('input[name="code"]').val(getCode().code);
-        $('form[name="login-form"]').submit();
-    }
-});
-
 function isNullOrUndefined(obj) {
     return obj === null || obj === undefined;
 }

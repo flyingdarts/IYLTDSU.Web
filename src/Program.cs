@@ -7,8 +7,6 @@ using System.Diagnostics.CodeAnalysis;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddSystemsManager("/WebApp");
-
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions())
                 .AddAuthentication((AuthenticationOptions options) => 
                 {
@@ -31,6 +29,8 @@ builder.Services.AddHttpClient<HomeController>();
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer()
                 .AddSwaggerGen();
+
+builder.Configuration.AddSystemsManager("/WebApp");
 
 // builder.Services.AddSignalR();
 
