@@ -1,4 +1,4 @@
-name: "Workflow WebApp"
+name: "Workflow Web"
 on:
   push:
     branches: [ main ]
@@ -7,7 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Checkout submodule
+      run: git submodule update --init --recursive
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
@@ -41,7 +45,7 @@ jobs:
         role-session-name: GithubPipelineSession
 
     - name: Deploy Web
-      working-directory: ./src/IYLTDSU.Web
+      working-directory: ./src
       run: dotnet lambda deploy-function --function-name "webapp-flyingdarts-function" --function-role "IYLTDSUWebAppRole" --disable-interactive true --function-timeout 30 --function-memory-size 512 --function-runtime "dotnet6" --function-handler "IYLTDSU.Web"
 
     - name: Notify discord

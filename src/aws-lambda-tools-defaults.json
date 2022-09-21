@@ -11,6 +11,6 @@
   "function-runtime": "dotnet6",
   "function-memory-size": 256,
   "function-timeout": "120",
-  "function-handler": "IYLTDSU.WebApp",
+  "function-handler": "IYLTDSU.Web",
   "function-url-enable": true
 }

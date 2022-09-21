@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IYLTDSU.Web", "IYLTDSU.Web.csproj", "{23B216B5-82BD-4ACA-ABBD-472C0264FF3C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{E21B6C2F-50E8-400C-8BF7-70BC2200E78E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IYLTDSU.Core", "IYLTDSU.Core", "{9DFD60E7-277A-4F65-B60C-488844958AA7}"
@@ -15,16 +13,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IYLTDSU.Persistance", "depe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IYLTDSU.Business", "dependencies\IYLTDSU.Core\IYLTDSU.Business\IYLTDSU.Business.csproj", "{2F5B450E-1541-4020-849D-96A627C860D0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IYLTDSU.Web", "src\IYLTDSU.Web.csproj", "{60C380BB-49C4-40A7-8B14-E156362E93E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F2831656-C993-49F1-BD02-C3E7173B697F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-publish.yml = .github\workflows\build-and-publish.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{23B216B5-82BD-4ACA-ABBD-472C0264FF3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23B216B5-82BD-4ACA-ABBD-472C0264FF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23B216B5-82BD-4ACA-ABBD-472C0264FF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23B216B5-82BD-4ACA-ABBD-472C0264FF3C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4307B527-8FD6-43AF-8ABF-A6C06A89346D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4307B527-8FD6-43AF-8ABF-A6C06A89346D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4307B527-8FD6-43AF-8ABF-A6C06A89346D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,6 +38,10 @@ Global
 		{2F5B450E-1541-4020-849D-96A627C860D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F5B450E-1541-4020-849D-96A627C860D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F5B450E-1541-4020-849D-96A627C860D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C380BB-49C4-40A7-8B14-E156362E93E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C380BB-49C4-40A7-8B14-E156362E93E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C380BB-49C4-40A7-8B14-E156362E93E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C380BB-49C4-40A7-8B14-E156362E93E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
