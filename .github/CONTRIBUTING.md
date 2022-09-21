@@ -1,4 +1,4 @@
-# Contributing to CleanArchitecture
+# Contributing to Flyingdarts
 
 **First:** if you're unsure or afraid of _anything_, just ask or submit the
 issue or pull request anyways. You won't be yelled at for giving your best
