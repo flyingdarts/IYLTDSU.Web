@@ -18,12 +18,9 @@ public class HomeController : Controller
         HttpClient.BaseAddress = new Uri("https://auth.flyingdarts.net");
 
         CognitoOptions = cognitoOptions.Value;
-
-        ViewData["AccessToken"] = "MT";
     }
     public ActionResult Index()
     {
-        ViewBag.AccessToken = "LEEG";
         return View();
     }
 
@@ -56,6 +53,6 @@ public class HomeController : Controller
 
         var result = await HttpClient.PostAsync("/oauth2/token", httpContent);
         ViewBag.Tokens = await result.Content.ReadAsStringAsync();
-        return RedirectToPage("Lobby");
+        return RedirectToAction("Index", "Lobby" );
     }
 }
