@@ -1,0 +1,58 @@
+name: "Workflow Web"
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Checkout submodule
+      run: git submodule update --init --recursive
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Cache NuGet packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+  
+    - name: Restore NuGet packages
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Install AWS Cli
+      run: dotnet tool install -g Amazon.Lambda.Tools
+    
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-1
+        role-duration-seconds: 300
+        role-session-name: GithubPipelineSession
+
+    - name: Deploy Web
+      working-directory: ./src
+      run: dotnet lambda deploy-function --function-name "webapp-flyingdarts-function" --function-role "IYLTDSUWebAppRole" --disable-interactive true --function-timeout 30 --function-memory-size 512 --function-runtime "dotnet6" --function-handler "IYLTDSU.Web"
+
+    - name: Notify discord
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        DISCORD_USERNAME: "${{ github.event.sender.login }}"
+        DISCORD_AVATAR: "${{ github.event.sender.avatar_url }}"
+      uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
+      with: 
+        args: 'Workflow {{ EVENT_PAYLOAD.workflow }} for repository: {{ EVENT_PAYLOAD.repository.name }} has run successfully.'
