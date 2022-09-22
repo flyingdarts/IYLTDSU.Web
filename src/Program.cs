@@ -2,30 +2,35 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Diagnostics.CodeAnalysis;
+using IYLTDSU.WebApp.Views.Home;
 
 [assembly: ExcludeFromCodeCoverage]
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions())
-                .AddAuthentication((AuthenticationOptions options) => 
+                .AddAuthentication(options => 
                 {
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddJwtBearer((JwtBearerOptions options) => {
+                .AddJwtBearer(options => {
                     options.Authority = builder.Configuration["Jwt:Authority"];
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters {
                         ValidIssuer = builder.Configuration["Jwt:Authority"],
                         ValidateIssuer = true,
                         ValidateAudience = false,
                         ValidateLifetime = true,
-                        LifetimeValidator = (before, expires, token, param) => expires > DateTime.UtcNow
+                        LifetimeValidator = (_, expires, _, _) => expires > DateTime.UtcNow
                     };
                 });
 
+builder.Services.AddSingleton<HomePageViewModel>();
+
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
+
 builder.Services.AddHttpClient<HomeController>();
+
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer()
                 .AddSwaggerGen();

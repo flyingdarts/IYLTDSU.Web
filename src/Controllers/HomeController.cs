@@ -1,11 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IYLTDSU.WebApp.Configuration;
+using Microsoft.AspNetCore.Mvc;
 using IYLTDSU.WebApp.Views.Home;
+using Microsoft.Extensions.Options;
 
 namespace IYLTDSU.WebApp.Controllers;
 
 public class HomeController : Controller
 {
-    public HomePageViewModel ViewModel { get; set; } = new();
+    internal HomePageViewModel ViewModel;
+    private readonly CognitoOptions _options;
+    public HomeController(IOptions<CognitoOptions> options, HomePageViewModel viewModel)
+    {
+        _options = options.Value;
+        ViewModel = viewModel;
+    }
 
     public ActionResult Index()
     {
@@ -15,6 +23,12 @@ public class HomeController : Controller
     [HttpGet("login")]
     public IActionResult Login([FromQuery] Guid code)
     {
+        ViewBag.ClientId = _options.ClientId;
+        ViewBag.ClientSecret = _options.ClientSecret;
+        ViewBag.GrantType = _options.GrantType;
+        ViewBag.RedirectUri = _options.RedirectUri;
+        ViewBag.Code = code.ToString();
+
         return View("Index", ViewModel);
     }
 

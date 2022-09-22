@@ -1,4 +1,5 @@
-﻿.socials-button {
+﻿
+.socials-button {
     background: #3C46A7;
     border-radius: 10px;
     margin: 30px 0;
@@ -15,27 +16,37 @@
     color: white;
     background: #303886;
 }
-
-input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    /* background-color: var(--form-background); */
-    margin: 0;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: start !important;
-    color: currentColor;
-    width: 20px;
-    height: 15px;
-    border: 1px solid #f9617d;
-    border-radius: 4px;
-    display: flex;
-    align-self: start;
-    place-content: center;
-    margin-right: 8px;
-    margin-top: 2px;
-    padding-top: 2px;
+.socials-disabled {
+    background: #3C46A7;
+    color: #3C46A7;
 }
+    .socials-disabled:hover {
+        background: #3C46A7;
+        color: #3C46A7;
+    }
+input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        /* background-color: var(--form-background); */
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: start !important;
+        color: currentColor;
+        width: 20px;
+        height: 15px;
+        border: 1px solid #f9617d;
+        border-radius: 4px;
+        display: flex;
+        align-self: start;
+        place-content: center;
+        margin-right: 8px;
+        margin-top: 2px;
+        padding-top: 2px;
+    }
+    input[type="checkbox"]:hover {
+        color: #D92079
+    }
 
 input[type="checkbox"]::before {
     content: "";
@@ -65,6 +76,9 @@ input[type="checkbox"]:checked::before {
     color: #f9617d;
     font-weight: 500;
     text-decoration: underline;
+}
+.checkbox-control a:hover {
+    color: #D92079
 }
 
 input[type="checkbox"]:focus {
