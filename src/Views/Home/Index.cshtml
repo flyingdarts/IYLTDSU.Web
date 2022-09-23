@@ -8,22 +8,6 @@
 <link href="@Url.Content("~/css/signup-and-registration.css")" rel="stylesheet" type="text/css" />
 <div class="row g-0 outside-frame">
     <div class="col-sm-0 col-md-12 col-lg-8  top-container">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid col-7">
-                <a class="navbar-brand">@ViewBag.Tokens</a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a asp-page="/Index" class="nav-link">Home</a></li>
-                        @*<li class="nav-item"><a asp-page="/Auth/Index" class="nav-link">Auth</a></li>
-                        <li class="nav-item"><a asp-page="/Game/Index" class="nav-link">Game</a></li>
-                        <li class="nav-item"><a asp-page="/Game/Index" class="nav-link">Game</a></li>*@
-                    </ul>
-                </div>
-            </div>
-            <div class="container-fluid col-5 navbar-control">
-                @*<a>501 - Best of 3 Sets 9 Legs - Double Out</a>*@
-            </div>
-        </nav>
         <div id="registrationCarousel" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -78,7 +62,7 @@
                 </a>
             </div>
             <p class="registration-info">Don't worry, we wont share your details with anyone else.</p>
-            <form id="authForm" action="login" class="input-group" method="POST" style="display: none;">
+            <div id="authForm" class="input-group" style="display: none;">
                 <input type="hidden" id="MyCode" value="@ViewBag.Code"/>
                 <div class="input-group">
                     <input id="submitBtn" type="submit" class="btn btn-primary my-primary-button" Value="Confirm"/>
@@ -92,7 +76,7 @@
                         @Html.ActionLink("Privacy Policy", "PrivacyPolicy", "Legal", null)
                     </span>
                 </label>
-            </form>
+            </div>
         </div>
     </div>
 </div>
@@ -104,32 +88,23 @@
             $.ajax({
                 type: 'POST',
                 url: 'https://auth.flyingdarts.net/oauth2/token',
-                dataType: "json",
                 data: {
-                    client_id: @ViewBag.ClientId,
-                    client_secret: @ViewBag.ClientSecret,
-                    grant_type: @ViewBag.GrantType,
-                    redirect_uri: @ViewBag.RedirectUri,
-                    code: @ViewBag.Code
+                    client_id: '@ViewBag.ClientId',
+                    client_secret: '@ViewBag.ClientSecret',
+                    grant_type: '@ViewBag.GrantType',
+                    redirect_uri: '@ViewBag.RedirectUri',
+                    code: '@ViewBag.Code'
                 },
                 success: function (data) {
-                    console.log(data)
+                    localStorage.setItem("accessToken", data.access_token);
+                    localStorage.setItem("refreshToken", data.refresh_token);
+                    localStorage.setItem("idToken", data.id_token);
+                    window.location.replace(`https://${location.host}/lobby`);
                 },
                 error: function (err) {
                     console.log(err)
                 }
             })
-            .then(
-                (data, textStatus, request) => {
-                    console.log(data);
-                    console.log(textStatus);
-                    console.log(request);
-                },
-                (request, textStatus, errorThrown) => {
-                    console.debug(request);
-                    console.log("ERROR !!\n" + "status: " + textStatus + " (" + request.status + ")\n" + "error: " + errorThrown);
-                }
-            )
         }
     
         function getCode() {

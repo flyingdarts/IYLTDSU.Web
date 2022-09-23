@@ -1,71 +1,17 @@
-﻿using IYLTDSU.WebApp.Controllers;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Diagnostics.CodeAnalysis;
-using IYLTDSU.WebApp.Configuration;
-using IYLTDSU.WebApp.Views.Home;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore;
 
 [assembly: ExcludeFromCodeCoverage]
-
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Configuration.AddSystemsManager("/WebApp");
-
-builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions())
-                .AddAuthentication(options => 
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(options => {
-                    options.Authority = builder.Configuration["Jwt:Authority"];
-                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters {
-                        ValidIssuer = builder.Configuration["Jwt:Authority"],
-                        ValidateIssuer = true,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        LifetimeValidator = (_, expires, _, _) => expires > DateTime.UtcNow
-                    };
-                });
-
-builder.Services.Configure<CognitoOptions>(builder.Configuration.GetSection(CognitoOptions.Cognito));
-
-builder.Services.AddSingleton<HomePageViewModel>();
-
-builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
-
-builder.Services.AddHttpClient<HomeController>();
-
-builder.Services.AddRazorPages();
-builder.Services.AddEndpointsApiExplorer()
-                .AddSwaggerGen();
-
-// builder.Services.AddSignalR();
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+public class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public static void Main(string[] args)
+    {
+        BuildWebHost(args).Run();
+    }
+
+    public static IWebHost BuildWebHost(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>()
+            .ConfigureAppConfiguration(x=>x.AddSystemsManager("/WebApp"))
+            .Build();
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-});
-
-// app.MapHub<LobbyHub>("/hubs/lobby");
-
-app.Run();

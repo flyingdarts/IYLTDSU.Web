@@ -8,6 +8,8 @@ public class CognitoOptions
     public string ClientSecret { get; set; } = string.Empty;
     public string GrantType { get; set; } = string.Empty;
     public string RedirectUri { get; set; } = string.Empty;
+    public string MetaDataAddress { get; set; } = string.Empty;
+    public string LogOutUri { get; set; } = string.Empty;
 
     public List<KeyValuePair<string, string>> ToKeyValuePairs()
     {

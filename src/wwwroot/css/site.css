@@ -107,6 +107,7 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
     font-size: 12px;
     line-height: 24px;
     text-align: center;
+    padding: 20px 0px;
 }
 
 .registration-subtitle {
@@ -166,102 +167,7 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     margin: 30px 0;
 }
-@media (max-width: 550px) and (orientation: portrait) {
-    body {
-        padding: 0 !important;
-        padding: 15px !important;
-    }
 
-    .body-content {
-        height: 100%;
-        max-width: unset;
-        padding: 0px;
-    } 
-    .top-container {
-        display: none;
-    }
-    .copy-text {
-        color: white;
-    }
-    .carousel-caption p {
-        font-size: 0.9em !important;
-    }
-}
-
-@media (min-width: 551px) and (max-width: 985px)  {
-    body {
-        padding: 0 !important;
-        padding: 15px !important;
-    }
-
-    .body-content {
-        height: 100%;
-        max-width: unset;
-        padding: 0px;
-    }
-    .copy-text {
-        color: white;
-        margin-bottom: 15px;
-    }
-    a, p, span, h1, h2, h3, h4, h5, h6,  div {
-        padding: 0;
-        margin: 0;
-    }
-    .carousel-custom-top {
-        margin-bottom: 40px;
-    }
-    .carousel-custom-top img {
-        height: 150px !important;
-    }
-    .carousel-caption
-    .carousel-caption h5 {
-        margin-top: 30px;
-        font-size: 2em !important;
-    }
-    .carousel-caption p {
-        font-size: 1em !important;
-    }
-    .container {
-        max-width: unset;
-    }
-}
-@media(min-width: 986px)  {
-    .carousel-custom-top > img {
-        max-height: 200px !important;
-        width: unset !important;
-    }
-
-    body {
-        padding: 0 !important;
-        padding: 15px !important;
-    }
-
-    .body-content {
-        height: 100%;
-        max-width: unset;
-        padding: 0px;
-    }  
-    .container {
-        max-width: unset;
-    }
-    .carousel-caption h5 {
-        font-size: 1.8em;
-        margin-top: 40px;
-    }
-}
-@media(min-width: 1312px) {
-    body {
-        padding: 15px !important;
-    }
-    .body-content {
-        margin: 0px !important;
-        padding: 0px !important;
-        max-width: unset;
-    }
-    .container {
-        max-width: unset;
-    }
-}
 .copy-text {
     margin-left: 20px;
     position: absolute;
@@ -273,14 +179,21 @@ footer {
 
 .my-primary-button {
     background-color: #F9617D;
+    border: none;
     color: white;
     border-radius: 20px;
     height: 40px;
     width: 100%;
+    margin-bottom: 10px;
 }
-.my-primary-button:hover {
-    background-color: #E35872
-}
+    .my-primary-button:hover {
+        background-color: #E35872;
+        border: none;
+    }
+    .my-primary-button:disabled {
+        background: #F9617D;
+        border: none;
+    }
 
 .navbar-expand-lg {
     flex-wrap: wrap;
@@ -303,4 +216,120 @@ footer {
 
 .ah-yeet {
     content: "Ah yeet";
+}
+
+@media (max-width: 550px) and (orientation: portrait) {
+    body {
+        padding: 0 !important;
+        padding: 15px !important;
+    }
+
+    .body-content {
+        height: 100%;
+        max-width: unset;
+        padding: 0px;
+    }
+
+    .top-container {
+        display: none;
+    }
+
+    .copy-text {
+        color: white;
+    }
+
+    .carousel-caption p {
+        font-size: 0.9em !important;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 985px) {
+    body {
+        padding: 0 !important;
+        padding: 15px !important;
+    }
+
+    .body-content {
+        height: 100%;
+        max-width: unset;
+        padding: 0px;
+    }
+
+    .copy-text {
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    a, p, span, h1, h2, h3, h4, h5, h6, div {
+        padding: 0;
+        margin: 0;
+    }
+
+    .carousel-custom-top {
+        margin-bottom: 40px;
+    }
+
+    .carousel-custom-top img {
+        height: 150px !important;
+    }
+
+    .carousel-caption
+    .carousel-caption h5 {
+        margin-top: 30px;
+        font-size: 2em !important;
+    }
+
+    .carousel-caption p {
+        font-size: 1em !important;
+    }
+
+    .container {
+        max-width: unset;
+    }
+    .my-primary-button {
+        margin-top: 30px;
+    }
+}
+
+@media(min-width: 986px) {
+    .carousel-custom-top > img {
+        max-height: 200px !important;
+        width: unset !important;
+    }
+
+    body {
+        padding: 0 !important;
+        padding: 15px !important;
+    }
+
+    .body-content {
+        height: 100%;
+        max-width: unset;
+        padding: 0px;
+    }
+
+    .container {
+        max-width: unset;
+    }
+
+    .carousel-caption h5 {
+        font-size: 1.8em;
+        margin-top: 40px;
+    }
+}
+
+@media(min-width: 1312px) {
+    body {
+        padding: 15px !important;
+    }
+
+    .body-content {
+        margin: 0px !important;
+        padding: 0px !important;
+        max-width: unset;
+    }
+
+    .container {
+        max-width: unset;
+    }
 }
