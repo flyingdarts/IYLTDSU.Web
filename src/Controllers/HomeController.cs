@@ -28,7 +28,8 @@ public class HomeController : Controller
         ViewBag.GrantType = _options.GrantType;
         ViewBag.RedirectUri = _options.RedirectUri;
         ViewBag.Code = code.ToString();
-
+        ViewBag.MetaDataAddress = _options.MetaDataAddress;
+        ViewBag.LogOutUri = _options.LogOutUri;
         return View("Index", ViewModel);
     }
 
