@@ -93,7 +93,7 @@
                     client_secret: '@ViewBag.ClientSecret',
                     grant_type: '@ViewBag.GrantType',
                     redirect_uri: '@ViewBag.RedirectUri',
-                    code: '@ViewBag.Code'
+                    code: getCode().code
                 },
                 success: function (data) {
                     localStorage.setItem("accessToken", data.access_token);
