@@ -88,9 +88,9 @@
             $.ajax({
                 type: 'POST',
                 url: 'https://auth.flyingdarts.net/oauth2/token',
-                headers: {
+                                headers: {
                     'Content-Type': 'x-www-form-urlencoded',
-                    'Authorization': 'Basic '+btoa(`${@ViewBag.ClientId}:${@ViewBag.ClientSecret}`)
+                    'Authorization': 'Basic '+btoa(`@ViewBag.ClientId:@ViewBag`)
                 }, 
                 data: {
                     grant_type: '@ViewBag.GrantType',
