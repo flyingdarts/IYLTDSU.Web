@@ -2,11 +2,14 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Diagnostics.CodeAnalysis;
+using IYLTDSU.WebApp.Configuration;
 using IYLTDSU.WebApp.Views.Home;
 
 [assembly: ExcludeFromCodeCoverage]
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddSystemsManager("/WebApp");
 
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions())
                 .AddAuthentication(options => 
@@ -25,6 +28,8 @@ builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions())
                     };
                 });
 
+builder.Services.Configure<CognitoOptions>(builder.Configuration.GetSection(CognitoOptions.Cognito));
+
 builder.Services.AddSingleton<HomePageViewModel>();
 
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
@@ -34,8 +39,6 @@ builder.Services.AddHttpClient<HomeController>();
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer()
                 .AddSwaggerGen();
-
-builder.Configuration.AddSystemsManager("/WebApp");
 
 // builder.Services.AddSignalR();
 

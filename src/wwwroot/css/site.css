@@ -1,6 +1,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    height: 100%;
 }
 body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins';
@@ -8,16 +9,21 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    height: 100%;
 }
 
 /* Carousel */
+.carousel-caption h5 {
+    font-size: 2em;
+}
 .carousel-caption p {
-    font-size: 20px;
+    font-size: 1em;
     line-height: 1.4;
 }
 
@@ -30,9 +36,9 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 767px) {
 
     /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+    /* .carousel-caption { */
+    /*     display: none; */
+    /* } */
 }
 
 
@@ -74,7 +80,7 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
 }
 
 .card {
-    height: 800px;
+    height: 100%;
 }
 
 .card-body {
@@ -160,6 +166,110 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     margin: 30px 0;
 }
+@media (max-width: 550px) and (orientation: portrait) {
+    body {
+        padding: 0 !important;
+        padding: 15px !important;
+    }
+
+    .body-content {
+        height: 100%;
+        max-width: unset;
+        padding: 0px;
+    } 
+    .top-container {
+        display: none;
+    }
+    .copy-text {
+        color: white;
+    }
+    .carousel-caption p {
+        font-size: 0.9em !important;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 985px)  {
+    body {
+        padding: 0 !important;
+        padding: 15px !important;
+    }
+
+    .body-content {
+        height: 100%;
+        max-width: unset;
+        padding: 0px;
+    }
+    .copy-text {
+        color: white;
+        margin-bottom: 15px;
+    }
+    a, p, span, h1, h2, h3, h4, h5, h6,  div {
+        padding: 0;
+        margin: 0;
+    }
+    .carousel-custom-top {
+        margin-bottom: 40px;
+    }
+    .carousel-custom-top img {
+        height: 150px !important;
+    }
+    .carousel-caption
+    .carousel-caption h5 {
+        margin-top: 30px;
+        font-size: 2em !important;
+    }
+    .carousel-caption p {
+        font-size: 1em !important;
+    }
+    .container {
+        max-width: unset;
+    }
+}
+@media(min-width: 986px)  {
+    .carousel-custom-top > img {
+        max-height: 200px !important;
+        width: unset !important;
+    }
+
+    body {
+        padding: 0 !important;
+        padding: 15px !important;
+    }
+
+    .body-content {
+        height: 100%;
+        max-width: unset;
+        padding: 0px;
+    }  
+    .container {
+        max-width: unset;
+    }
+    .carousel-caption h5 {
+        font-size: 1.8em;
+        margin-top: 40px;
+    }
+}
+@media(min-width: 1312px) {
+    body {
+        padding: 15px !important;
+    }
+    .body-content {
+        margin: 0px !important;
+        padding: 0px !important;
+        max-width: unset;
+    }
+    .container {
+        max-width: unset;
+    }
+}
+.copy-text {
+    margin-left: 20px;
+    position: absolute;
+    bottom: 0;
+}
+footer {
+    margin-top: 10px;
+}
 
 .my-primary-button {
     background-color: #F9617D;
@@ -168,10 +278,9 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
     height: 40px;
     width: 100%;
 }
-
-    .my-primary-button:hover {
-        background-color: #E35872
-    }
+.my-primary-button:hover {
+    background-color: #E35872
+}
 
 .navbar-expand-lg {
     flex-wrap: wrap;

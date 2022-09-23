@@ -6,8 +6,8 @@
 }
 @model IYLTDSU.WebApp.Views.Home.HomePageViewModel
 <link href="@Url.Content("~/css/signup-and-registration.css")" rel="stylesheet" type="text/css" />
-<div class="row g-0">
-    <div class="col-sm-0 col-m-8">
+<div class="row g-0 outside-frame">
+    <div class="col-sm-0 col-md-12 col-lg-8  top-container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid col-7">
                 <a class="navbar-brand">@ViewBag.Tokens</a>
@@ -31,7 +31,7 @@
                         <img src="~/images/undraw_social_media.svg" class="d-block w-50 mx-auto" alt="Dartboard with one dart">
                     </div>
                     <div class="carousel-custom-bottom">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-block">
                             <h5>First slide label</h5>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>
@@ -42,7 +42,7 @@
                         <img src="~/images/undraw_personal_information.svg" class="d-block w-50 mx-auto" alt="Dartboard with three darts">
                     </div>
                     <div class="carousel-custom-bottom">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-block">
                             <h5>Second slide label</h5>
                             <p>Some representative placeholder content for the second slide.</p>
                         </div>
@@ -53,7 +53,7 @@
                         <img src="~/images/undraw_speech_to_text.svg" class="d-block w-50 mx-auto" alt="Person picking the darts for the dartboard">
                     </div>
                     <div class="carousel-custom-bottom">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-block">
                             <h5>Third slide label</h5>
                             <p>Some representative placeholder content for the third slide.</p>
                         </div>
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12 col-m-4 app-view-portrait app-view-portrait-registration">
+    <div class="col-sm-12 col-md-12 col-lg-4 app-view-portrait app-view-portrait-registration">
         <div class="app-view-portrait-inner">
 
             <h1 class="registration-title text-center">Start Darting Fast!</h1>
@@ -103,60 +103,60 @@
 @section Scripts {
     <script src="https://unpkg.com/@Html.Raw("@")lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    @* <script> *@
-    @*     function login() { *@
-    @*         $.ajax({ *@
-    @*             type: 'POST', *@
-    @*             url: 'https://auth.flyingdarts.net/oauth2/token', *@
-    @*             dataType: "json", *@
-    @*             data: { *@
-    @*                 client_id: '@ViewBag.ClientId', *@
-    @*                 client_secret: '@ViewBag.ClientSecret', *@
-    @*                 grant_type: '@ViewBag.GrantType', *@
-    @*                 redirect_uri: '@ViewBag.RedirectUri', *@
-    @*                 code: '@ViewBag.Code' *@
-    @*             }, *@
-    @*             success: function (data) { *@
-    @*                 console.log(data) *@
-    @*             }, *@
-    @*             error: function (err) {  *@
-    @*                 console.log(err) *@
-    @*             } *@
-    @*         }) *@
-    @*         .then( *@
-    @*             (data, textStatus, request) => { *@
-    @*                 console.log(data); *@
-    @*                 console.log(textStatus); *@
-    @*                 console.log(request); *@
-    @*             }, *@
-    @*             (request, textStatus, errorThrown) => { *@
-    @*                 console.debug(request); *@
-    @*                 console.log("ERROR !!\n" + "status: " + textStatus + " (" + request.status + ")\n" + "error: " + errorThrown); *@
-    @*             } *@
-    @*         ) *@
-    @*     } *@
-    @* *@
-    @*     function getCode() { *@
-    @*         if (window.location.search.indexOf("code") > -1) { *@
-    @*             var params = new URLSearchParams(window.location.search).get("code"); *@
-    @*             return { "code": params } *@
-    @*         } *@
-    @*     } *@
-    @* *@
-    @*     $(document).ready(function () { *@
-    @*         $('#submitBtn').prop('disabled', true); *@
-    @*         if (!isNullOrUndefined(getCode()) && getCode().code.length > 1) { *@
-    @*             $("#connectedWithSocial").css('display', 'block') *@
-    @*             $("#authButton").removeAttr('href'); *@
-    @*             $("#authButton").addClass('socials-disabled') *@
-    @*             $('#authForm').css('display', 'flex'); *@
-    @*             $('#checkBoxAccept').change(function () { *@
-    @*                 $('#submitBtn').prop('disabled', !this.checked); *@
-    @*             }); *@
-    @*             $("#submitBtn").click(() => login()) *@
-    @*         } *@
-    @*     }); *@
-    @* *@
-    @* *@
-    @* </script> *@
+    <script>
+        function login() {
+            $.ajax({
+                type: 'POST',
+                url: 'https://auth.flyingdarts.net/oauth2/token',
+                dataType: "json",
+                data: {
+                    client_id: @ViewBag.ClientId,
+                    client_secret: @ViewBag.ClientSecret,
+                    grant_type: @ViewBag.GrantType,
+                    redirect_uri: @ViewBag.RedirectUri,
+                    code: @ViewBag.Code
+                },
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+            .then(
+                (data, textStatus, request) => {
+                    console.log(data);
+                    console.log(textStatus);
+                    console.log(request);
+                },
+                (request, textStatus, errorThrown) => {
+                    console.debug(request);
+                    console.log("ERROR !!\n" + "status: " + textStatus + " (" + request.status + ")\n" + "error: " + errorThrown);
+                }
+            )
+        }
+    
+        function getCode() {
+            if (window.location.search.indexOf("code") > -1) {
+                var params = new URLSearchParams(window.location.search).get("code");
+                return { "code": params }
+            }
+        }
+    
+        $(document).ready(function () {
+            $('#submitBtn').prop('disabled', true);
+            if (!isNullOrUndefined(getCode()) && getCode().code.length > 1) {
+                $("#connectedWithSocial").css('display', 'block');
+                $("#authButton").removeAttr('href');
+                $("#authButton").addClass('socials-disabled')
+                $('#authForm').css('display', 'flex');
+                $('#checkBoxAccept').change(function () {
+                    $('#submitBtn').prop('disabled', !this.checked);
+                });
+                $("#submitBtn").click(() => login())
+            }
+        });
+    
+    
+    </script>
 }
