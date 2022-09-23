@@ -69,19 +69,15 @@
     </div>
     <div class="col-sm-12 col-md-12 col-lg-4 app-view-portrait app-view-portrait-registration">
         <div class="app-view-portrait-inner">
-
             <h1 class="registration-title text-center">Start Darting Fast!</h1>
             <h2 class="registration-subtitle text-center">Setting up your account</h2>
-
             <div id="socialButton">
                 <a id="authButton" href="@ViewBag.LoginEndpoint" class="socials-button">
                     <lottie-player id="connectedWithSocial" src="@ViewBag.LottieAnimationCheckmarkUrl" background="transparent" speed="1" style="width: 300px; height: 300px; position: absolute; display: none;" autoplay></lottie-player>
                     @ViewBag.ConnectSocialString
                 </a>
             </div>
-
             <p class="registration-info">Don't worry, we wont share your details with anyone else.</p>
-
             <form id="authForm" action="login" class="input-group" method="POST" style="display: none;">
                 <input type="hidden" id="MyCode" value="@ViewBag.Code"/>
                 <div class="input-group">
