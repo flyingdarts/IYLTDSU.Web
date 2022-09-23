@@ -117,6 +117,16 @@
         }
     
         $(document).ready(function () {
+            $('#appContainer').append('<img src="./images/drop-1.svg" class="droplet" />');
+            $('#appContainer').append('<img src="./images/drop-2.svg" class="droplet" />');
+            $('#appContainer').append('<img src="./images/drop-3.svg" class="droplet" />');
+            $('#appContainer').append('<img src="./images/drop-4.svg" class="droplet" />');
+            $('#appContainer').append('<img src="./images/drop-5.svg" class="droplet" />');
+            $('#appContainer').append('<img src="./images/drop-6.svg" class="droplet" />');
+            $('.droplet').each((index, el) => {
+                el.css('top', '40');
+
+            });
             $('#submitBtn').prop('disabled', true);
             if (!isNullOrUndefined(getCode()) && getCode().code.length > 1) {
                 $("#connectedWithSocial").css('display', 'block');

@@ -334,3 +334,7 @@ footer {
         max-width: unset;
     }
 }
+.droplet {
+    position: fixed;
+    display: flex;
+}
