@@ -37,6 +37,7 @@ public class Startup
 
         app.UseRouting();
         app.UseAuthentication();
+        app.UseAuthorization();
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute(
