@@ -99,7 +99,7 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
 .carousel {
     display: flex;
     flex-direction: column;
-    height: calc(100% - 55px);
+    height: calc(100%);
     justify-content: center;
 }
 
@@ -130,10 +130,7 @@ body, html, a, p, span, h1, h2, h3, h4, h5, h6 {
 }
 
 .registration-carousel-indicators {
-    left: unset;
-    margin-right: unset;
-    right: 40px;
-    bottom: 40px;
+
 }
 
 .carousel-caption {
@@ -333,4 +330,20 @@ footer {
     .container {
         max-width: unset;
     }
+}
+
+.bottom-bar {
+    justify-content: space-between;
+}
+.bottom-bar p, .bottom-bar div {
+    position: relative !important;
+    justify-self: flex-end;
+    color: #3c46a7;
+    font-family: 'Poppins';
+    font-weight: 400
+}
+
+.bottom-bar > div {
+    margin: 0;
+    margin-right: 20px;
 }
