@@ -19,6 +19,7 @@ public class Startup
         var metaDataAddress = Configuration["CognitoOptions:MetaDataAddress"];
         var logoutUri = Configuration["CognitoOptions:LogOutUri"];
         var redirectUri = Configuration["CognitoOptions:RedirectUri"];
+        var jwtAuthority = Configuration["CognitoOptions:JwtAuthority"];
 
         services.Configure<CookiePolicyOptions>(options =>
         {
@@ -32,15 +33,14 @@ public class Startup
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddCookie(options => options.Events.OnSigningIn = FilterGroupClaims)
+            .AddCookie()
             .AddOpenIdConnect(options =>
             {
-                options.ResponseType = "code";
-                options.MetadataAddress = metaDataAddress;
+                options.ResponseType = "bearer";
                 options.ClientId = clientId;
                 options.ClientSecret = clientSecret;
-                options.GetClaimsFromUserInfoEndpoint = true;
                 options.Scope.Add("email");
+                options.Authority = jwtAuthority;
                 options.Events = new OpenIdConnectEvents
                 {
                     OnRedirectToIdentityProviderForSignOut = (context) =>
@@ -85,22 +85,5 @@ public class Startup
                 pattern: "{controller=Home}/{action=Index}/{id?}");
         });
 
-    }
-    
-    private static Task FilterGroupClaims(CookieSigningInContext context)
-    {
-        var principal = context.Principal;
-        if (principal.Identity is ClaimsIdentity identity)
-        {
-            var unused = identity.FindAll(GroupsToRemove).ToList();
-            unused.ForEach(c => identity.TryRemoveClaim(c));
-        }
-        return Task.FromResult(principal);
-    }
-
-    private static bool GroupsToRemove(Claim claim)
-    {
-        string[] _groupObjectIds = new string[] { "identities" };
-        return claim.Type == "groups" && !_groupObjectIds.Contains(claim.Type);
     }
 }
