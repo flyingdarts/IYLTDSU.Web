@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "_Layout";
+    ViewBag.Title = "Welkom";
     ViewBag.LoginEndpoint = "https://auth.flyingdarts.net/login?response_type=code&client_id=7f1gvuc7ti7bhda3mjs8ovmc0&redirect_uri=https%3A%2F%2Fflyingdarts.net%2Flogin";
     ViewBag.LottieAnimationCheckmarkUrl = "https://lottie.host/5a430ec5-3e06-4c40-a0d6-219497a98663/pDB6BWP3Tz.json";
     ViewBag.ConnectSocialString = "Connect with your preferred social account";
@@ -91,10 +92,6 @@
             $.ajax({
                 type: 'POST',
                 url: 'https://auth.flyingdarts.net/oauth2/token',
-                //    headers: {
-                  //  'Content-Type': 'x-www-form-urlencoded',
-                  //  'Authorization': 'Basic '+btoa(`@ViewBag.ClientId:@ViewBag`)
-                //}, 
                 data: {
                     client_id: '@ViewBag.ClientId',
                     client_secret: '@ViewBag.ClientSecret',

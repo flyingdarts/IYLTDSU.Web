@@ -1,12 +1,10 @@
 ﻿using System.Diagnostics;
 using IYLTDSU.WebApp.Models;
 using IYLTDSU.WebApp.Models.Lobby;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IYLTDSU.WebApp.Controllers;
 
-[Authorize]
 public class LobbyController : Controller
 {
     private readonly ILogger<HomeController> _logger;
